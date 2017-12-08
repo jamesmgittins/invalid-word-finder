@@ -16,7 +16,15 @@ function loadDictionary() {
   var files = $("#dictionary")[0].files;
 
   if (files.length == 0) {
-    changeStatus("You must select a dictionary file first!");
+    changeStatus("Loading default dictionary...");
+    $.get("words.txt",function(txt){
+        var tempDictionary = txt.split(/\s+/g);
+        dictionary = [];
+        tempDictionary.forEach(function(word){
+         dictionary[String(word).toUpperCase()] = true;
+        });
+        loadInputFiles();
+    });
     return;
   }
 
@@ -28,7 +36,7 @@ function loadDictionary() {
     var tempDictionary = event.target.result.split(/\s+/g);
     dictionary = [];
     tempDictionary.forEach(function(word){
-     dictionary[word.toUpperCase()] = true;
+     dictionary[String(word).toUpperCase()] = true;
     });
     loadInputFiles();
   };

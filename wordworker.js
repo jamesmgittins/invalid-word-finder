@@ -30,7 +30,6 @@ function checkWordIsBad(word, context, lineNo) {
 }
 
 function checkForBadWords() {
-  console.log("worker checking for bad words");
   self.totalWords = 0;
   self.count = 0;
   self.lastUpdatedList = 0;
@@ -39,7 +38,7 @@ function checkForBadWords() {
   }
   for (x = 0; x < self.inputWords.length; x++) {
     for (var i = 0; i < self.inputWords[x].length; i++) {
-      var linesWords = self.inputWords[x][i].split(/\s+|\.|,|\(|\)|\/|"|-|:|;|\?|{|}|=|>|<|!|\+|\-|&|\[|\]|\^|\*|—/g);
+      var linesWords = self.inputWords[x][i].split(/\s+|\.|,|\(|\)|\/|"|-|:|;|\?|{|}|=|>|<|!|\+|\-|&|\[|\]|\^|\*|—|''/g);
       for (var j = 0; j < linesWords.length; j++) {
         checkWordIsBad(linesWords[j], self.inputWords[x][i], i);
       }
