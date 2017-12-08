@@ -4,12 +4,8 @@ function checkWordIsBad(word, context, lineNo) {
     return;
 
   var badWord = true;
-  var j = 0;
-  while (j < dictionary.length) {
-    if (dictionary[word.toUpperCase()]) {
-      badWord = false;
-    }
-    j++;
+  if (dictionary[word.toUpperCase()]) {
+    badWord = false;
   }
   if (badWord) {
     if (self.badWords[word] == undefined) {
@@ -21,11 +17,8 @@ function checkWordIsBad(word, context, lineNo) {
       self.badWords[word].lineNo += ", " + lineNo + 1;
     }
     var percentage = (self.count / self.totalWords * 100);
-    if (percentage > self.lastUpdatedList + 5) {
-      self.postMessage({badWords:self.badWords, msg:"Processing (" + percentage.toFixed(2) + "%)"});
-      self.lastUpdatedList = percentage;
-    } else {
-      self.postMessage("Processing (" + (self.count / self.totalWords * 100).toFixed(2) + "%)");
+    if (percentage > self.lastUpdatedList + 1) {
+      self.postMessage("Processing (" + (self.count / self.totalWords * 100).toFixed() + "%)");
     }
   }
 }
