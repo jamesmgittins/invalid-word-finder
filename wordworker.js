@@ -4,6 +4,12 @@ function checkWordIsBad(word, context, lineNo) {
     return;
 
   var badWord = true;
+  if (word.match(/s'$/g)) {
+    word = word.replace(/'$/g, "");
+  }
+  if (word.match(/'s$/g)) {
+    word = word.replace(/'s$/g, "");
+  }
   if (dictionary[word.toUpperCase()]) {
     badWord = false;
   }
@@ -31,7 +37,7 @@ function checkForBadWords() {
   for (var x = 0; x < self.inputWords.length; x++) {
     self.totalWords += self.inputWords[x].length;
   }
-  for (var x = 0; x < self.inputWords.length; x++) {
+  for (x = 0; x < self.inputWords.length; x++) {
     for (var i = 0; i < self.inputWords[x].length; i++) {
       var linesWords = self.inputWords[x][i].split(/\s+|\.|,|\(|\)|\/|"|-|:|;|\?|{|}|=|>|<|!|\+|\-|&|\[|\]|\^|\*|—/g);
       for (var j = 0; j < linesWords.length; j++) {

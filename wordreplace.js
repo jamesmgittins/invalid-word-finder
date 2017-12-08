@@ -83,6 +83,7 @@ function startWorker() {
 }
 
 function processFiles() {
+  $("#badWordTable > tbody").empty();
   loadDictionary();
 }
 
