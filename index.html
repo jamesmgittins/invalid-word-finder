@@ -12,8 +12,8 @@
     <div class="container">
       <h1>Invalid Word Finder</h1>
 
-      <div class="row align-items-start row-eq-height" style="margin-bottom:20px;">
-        <div class="col-sm">
+        <div class="card-deck" style="margin-bottom:20px;">
+
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Dictionary File</h4>
@@ -21,9 +21,7 @@
               <input type="file" id="dictionary" name="dictionary" enctype="multipart/form-data"/>
             </div>
           </div>
-        </div>
 
-        <div class="col-sm">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Input Files</h4>
@@ -31,9 +29,7 @@
               <input type="file" id="input" name="input" enctype="multipart/form-data" multiple="multiple"/>
             </div>
           </div>
-        </div>
 
-        <div class="col-sm">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title" id="status">Select some files and click process files button.</h4>
@@ -42,10 +38,6 @@
             </div>
           </div>
         </div>
-
-      </div>
-
-
 
       <table id="badWordTable" class="table table-striped">
         <thead>
