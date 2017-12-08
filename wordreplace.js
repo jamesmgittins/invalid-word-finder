@@ -126,5 +126,16 @@ function downloadCSV() {
     csvContent += element.key + "," + element.value + ",\"" + element.context + "\",\"" + element.lineNo + "\"\r\n";
   });
   var encodedUri = encodeURI(csvContent);
-  window.open(encodedUri);
+  // window.open(encodedUri);
+
+  var link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  var fileName = "invalidwords";
+  for (var i = 0; i < $("#input")[0].files.length; i++) {
+    fileName += "_" + $("#input")[0].files[i].name.replace(".txt", "");
+  }
+  link.setAttribute("download", fileName + ".csv");
+  document.body.appendChild(link); // Required for FF
+
+  link.click();
 }
